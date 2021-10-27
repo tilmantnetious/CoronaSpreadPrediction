@@ -7,10 +7,19 @@ Corona Spread Prediction
 @copyright CC BY-SA
 
 """
+from ruleset import ruleset
 
 class Main:
     def __init__(self):
         """Konstruktor"""
+        self.config = open('config.json')
 
 
+# Intitialize runtime
 runtime = Main()
+
+# Create a ruleset with Paramenters from JSON
+runtime.ruleset = ruleset.Ruleset(runtime.config)
+
+#Debugpoint
+print("hold")

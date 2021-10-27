@@ -1,0 +1,26 @@
+{
+  "virus": {
+    "Virus_a": {
+      "name": "TestVirus",
+      "infectionProbabilty": ".5",
+      "incubationTime": "14",
+      "infectionTime": "2",
+      "mortalityRate": ".2"
+    }
+  },
+  "environment": {
+    "environment_a": {
+      "name": "TestEnvironment",
+      "populationDensity": "5000",
+      "distance": "2",
+      "masks": "1",
+      "curfew": "1",
+      "lockdown": "0"
+    }
+  },
+  "people": {
+    "people_a": {
+      "age": "30"
+    }
+  }
+}
