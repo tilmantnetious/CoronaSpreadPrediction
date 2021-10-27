@@ -8,6 +8,8 @@ People. Parameters containing the Agents of the Simulation
 """
 
 class People:
-    def __init__(self):
-        """todo"""
+    def __init__(self, conf):
+        self.people = conf
 
+    def getPeople(self):
+        return self.people

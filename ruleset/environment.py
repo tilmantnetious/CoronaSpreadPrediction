@@ -8,5 +8,8 @@ Environment.
 """
 
 class Environment:
-    def __init__(self):
-        """todo"""
+    def __init__(self, conf):
+        self.env = conf
+
+    def getEnvironment(self):
+        return self.env

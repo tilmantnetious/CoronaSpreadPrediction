@@ -8,6 +8,8 @@ Virus. Contains Parameters describing the Covid Virus
 """
 
 class Virus:
-    def __init__(self):
+    def __init__(self, conf):
+        self.virus = conf
 
-        """todo"""
+    def getVirus(self):
+        return self.virus

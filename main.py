@@ -19,7 +19,7 @@ class Main:
 runtime = Main()
 
 # Create a ruleset with Paramenters from JSON
-runtime.ruleset = ruleset.Ruleset(runtime.config)
+runtime.ruleset = ruleset.Ruleset(runtime.config).getRuleset()
 
 #Debugpoint
 print("hold")

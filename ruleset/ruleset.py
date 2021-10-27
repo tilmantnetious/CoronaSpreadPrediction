@@ -8,6 +8,9 @@ Ruleset. Calculates and returns a Ruleset for Simulation
 """
 import json
 from collections import namedtuple
+from .virus import Virus
+from .environment import Environment
+from .people import People
 
 def jsonDecode(dictionary):
     """
@@ -20,3 +23,22 @@ def jsonDecode(dictionary):
 class Ruleset:
     def __init__(self, file):
         self.config = json.load(file, object_hook=jsonDecode)
+
+        self.virus = Virus(self.config.virus)
+        self.environment = Environment(self.config.environment)
+        self.people = People(self.config.people)
+
+    def getRuleset(self):
+
+        #fixme
+        #   Hier muss die Schnittstelle definiert werden, die
+        #   unser Ruleset definiert. Wir sollten hier erstmal einen passenden Array Mocken
+        #   um die Simulation zum laufen zu bringen. TS
+
+        ruleset = {
+            "virus" : self.virus.getVirus(),
+            "env": self.environment.getEnvironment(),
+            "people" : self.people.getPeople(),
+        }
+
+        return ruleset
