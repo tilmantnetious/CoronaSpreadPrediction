@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bca3d248-e764-4902-9a25-5f1377bc0e29" name="Changes" comment="-- rebase" />
+    <list default="true" id="bca3d248-e764-4902-9a25-5f1377bc0e29" name="Changes" comment="-- cleanup">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +47,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -95,6 +99,7 @@
       <workItem from="1635229545706" duration="727000" />
       <workItem from="1635243964742" duration="596000" />
       <workItem from="1635318674659" duration="13259000" />
+      <workItem from="1635353370728" duration="311000" />
     </task>
     <task id="LOCAL-00001" summary="-- Initial refactoring and structure/project files">
       <created>1635323747724</created>
@@ -131,7 +136,21 @@
       <option name="project" value="LOCAL" />
       <updated>1635353134188</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="-- rebase">
+      <created>1635353520679</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1635353520679</updated>
+    </task>
+    <task id="LOCAL-00007" summary="-- cleanup">
+      <created>1635353678379</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1635353678379</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,7 +175,8 @@
     <MESSAGE value="-- created base object handling" />
     <MESSAGE value="-- created simulation structure" />
     <MESSAGE value="-- rebase" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- rebase" />
+    <MESSAGE value="-- cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- cleanup" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CoronaSpreadPrediction$main.coverage" NAME="main Coverage Results" MODIFIED="1635351986840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
