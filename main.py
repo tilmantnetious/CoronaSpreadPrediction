@@ -25,6 +25,12 @@ runtime.ruleset = ruleset.Ruleset(runtime.config).getRuleset()
 #Create a Simulation with given Rulesets
 runtime.sim = sim.Sim(runtime.ruleset)
 
+#setStopCondition(duration -int =Dauer der Simulation in Sekunden, extinctDiseas -Bool =standardmäßig False, wenn true,
+# hört die Simulation auf, wenn die Krankheit ausgestorben ist)
+# @todo --> JSON - parameter
+runtime.sim.setStopCondition(duration=100)
+
+runtime.sim.start(25)
 
 #Debugpoint
 print("hold")

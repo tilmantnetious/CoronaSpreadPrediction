@@ -1,21 +1,24 @@
 {
   "virus": {
-    "Virus_a": {
-      "name": "TestVirus",
-      "infectionProbabilty": ".5",
+    "cov": {
+      "name": "cov",
+      "infectionRadius": 1.5,
+      "infectionProbabilty": ".999",
       "incubationTime": "14",
-      "infectionTime": "2",
-      "mortalityRate": ".2"
+      "infectionTime": "10",
+      "mortalityRate": ".001"
     }
   },
   "environment": {
     "environment_a": {
-      "name": "TestEnvironment",
-      "populationDensity": "5000",
-      "distance": "2",
-      "masks": "1",
-      "curfew": "1",
-      "lockdown": "0"
+      "name" : "Environment 1",
+      "xDimension": 50,
+      "yDimension": 50,
+      "populationAmmount": 100,
+      "distance": 0,
+      "hasMasks": false,
+      "hasAusgangssperre": false,
+      "hasLockdown": false
     }
   },
   "people": {
