@@ -7,7 +7,7 @@ Simulation Module
 @copyright CC BY-SA
 
 """
-import matplotlib; matplotlib.use("Qt5Agg")
+#import matplotlib; matplotlib.use("Qt5Agg")
 import matplotlib.pyplot as plt
 import matplotlib.animation
 import numpy as np
@@ -19,7 +19,7 @@ from .agent import Position as position
 
 class Sim:
     def __init__(self, ruleset):
-        self.Virus = ruleset['virus'][0]         #todo --> dynamisch ausbauen
+        self.Virus = ruleset['virus'][0]         #todo --> dynamisch ausbauen!
         self.Environment = ruleset['env'][0]     #todo --> dynamisch ausbauen
         self.stateList = self.__setStates()
         self.colorList = self.__setColors()

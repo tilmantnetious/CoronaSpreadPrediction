@@ -58,7 +58,7 @@ class Agent:
     def getInfected(self):
         self.isInfected = True
         self.isSusceptible = False
-
+        
     def getRemoved(self):
         self.isRemoved = True
         self.isInfected = False

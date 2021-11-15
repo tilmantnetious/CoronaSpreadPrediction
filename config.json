@@ -3,7 +3,7 @@
     "cov": {
       "name": "cov",
       "infectionRadius": 1.5,
-      "infectionProbabilty": ".999",
+      "infectionProbability": ".999",
       "incubationTime": "14",
       "infectionTime": "10",
       "mortalityRate": ".001"
