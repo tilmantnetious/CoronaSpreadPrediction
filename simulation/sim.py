@@ -99,20 +99,20 @@ class Sim:
     def __updateStates(self):
         for i in range(self.Environment.populationAmmount):
             if (self.agentList[i].isSusceptible == True):
-                self.stateList = "s"
+                self.stateList[i] = "s"
             elif (self.agentList[i].isInfected == True):
-                self.stateList = "i"
+                self.stateList[i] = "i"
             elif (self.agentList[i].isRemoved == True):
-                self.stateList = "r"
+                self.stateList[i] = "r"
 
     # Uodate die Farbe der Agenten
     def __updateColors(self):
         for i in range(self.Environment.populationAmmount):
-            if (self.colorList[i] == "s"):
+            if (self.stateList[i] == "s"):
                 self.colorList[i] = "blue"
-            elif (self.colorList[i] == "i"):
+            elif (self.stateList[i] == "i"):
                 self.colorList[i] = "red"
-            elif (self.colorList[i] == "r"):
+            elif (self.stateList[i] == "r"):
                 self.colorList[i] = "green"
 
     # Erfasse die GruppenGrößen
