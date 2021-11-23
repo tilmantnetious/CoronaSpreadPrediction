@@ -7,7 +7,7 @@ Simulation Module
 @copyright CC BY-SA
 
 """
-#import matplotlib; matplotlib.use("Qt5Agg")
+#import matplotlib; matplotlib.use("Qt5Agg") #use on qt-based window-renderer
 import matplotlib.pyplot as plt
 import matplotlib.animation
 import numpy as np
