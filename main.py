@@ -9,6 +9,7 @@ Corona Spread Prediction
 """
 from ruleset import ruleset
 from simulation import sim
+from out import animation
 
 class Main:
     def __init__(self):
@@ -30,4 +31,7 @@ runtime.sim = sim.Sim(runtime.ruleset)
 # @todo --> JSON - parameter
 runtime.sim.setStopCondition(duration=100)
 
-runtime.sim.start(25)
+result = runtime.sim.start(50)
+
+#create Simulation
+runtime.animation = animation.Animation(ruleset.Ruleset(runtime.config).getSettings(), result)

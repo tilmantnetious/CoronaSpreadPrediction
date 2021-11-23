@@ -25,5 +25,9 @@
     "people_a": {
       "age": "30"
     }
+  },
+  "settings": {
+    "framesPerSecond" : 50,
+    "intervalPerFrame" : 1000
   }
 }

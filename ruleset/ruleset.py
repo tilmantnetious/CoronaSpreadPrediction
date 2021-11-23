@@ -27,6 +27,7 @@ class Ruleset:
         self.virus = Virus(self.config.virus)
         self.environment = Environment(self.config.environment)
         self.people = People(self.config.people)
+        self.settings = self.config.settings
 
     def getRuleset(self):
 
@@ -42,3 +43,6 @@ class Ruleset:
         }
 
         return ruleset
+
+    def getSettings(self):
+        return self.settings

@@ -20,7 +20,7 @@ from .agent import Position as position
 class Sim:
     def __init__(self, ruleset):
         self.Virus = ruleset['virus'][0]         #todo --> dynamisch ausbauen!
-        self.Environment = ruleset['env'][0]     #todo --> dynamisch ausbauen
+        self.Environment = ruleset['env'][0]     #todo --> dynamisch ausbauen!
         self.stateList = self.__setStates()
         self.colorList = self.__setColors()
         self.agentList = self.__generateAgents()
@@ -134,30 +134,20 @@ class Sim:
     # Starte Simulation
     def start(self, FPS):
         print("Start")
-        iv = 1000 / FPS
+        duration = 0
 
-        # erstelle 2 Plots
-        fig, (ax1, ax2) = plt.subplots(1, 2)
-        # Scatter Plot - Simulation
-        sc = ax1.scatter(self.xCoordinates, self.yCoordinates, color=self.colorList)
-        # Line Plot - Verbreitung
-        pl1, = ax2.plot(self.TimeList, self.SusAmmountList, "-b", label="susceptible")
-        pl2, = ax2.plot(self.TimeList, self.InfAmmountList, "-r", label="infectious")
-        pl3, = ax2.plot(self.TimeList, self.RemAmmountList, "-g", label="removed")
-        ax2.legend(loc="upper left")
-        # Scatter Plot Spezifikationen
-        ax1.set_xlim(0, self.Environment.xDimension)
-        ax1.set_ylim(0, self.Environment.yDimension)
-        ax1.set_xlabel("Position X")
-        ax1.set_ylabel("Position Y")
-        ax1.set_title(str(self.Environment.name) + " Simulation")
-        # Line Plot Spezifikationen
-        ax2.set_ylim(0, self.Environment.populationAmmount)
-        ax2.set_xlabel("Time")
-        ax2.set_ylabel("Agents")
-        ax2.set_title(str(self.Environment.name) + " Spread")
+        #Initialisierung des Returnarrays
+        start_x_pos, start_y_pos =  self.__setCoordinates()
+        return_x_pos = [[start_y_pos]]
+        return_y_pos = [[start_y_pos]]
+        return_color = [[self.__setColors()]]
+        return_SusAmmountList = []
+        return_InfAmmountList = []
+        return_RemAmmountList = []
+        return_timeList = []
 
-        def animate(i):
+        while duration <= self.duration:
+
             # Bewege jeden einzelnen Agenten
             for i in range(self.Environment.populationAmmount):
                 self.agentList[i].move(self.direction[i], self.Environment.xDimension, self.Environment.yDimension)
@@ -181,34 +171,50 @@ class Sim:
 
             # update die Koordinaten, Status und Farben der Agenten
             self.__updateCoordinates()
+            return_x_pos.append([self.xCoordinates])
+            return_y_pos.append([self.yCoordinates])
+
 
             # Hier der Spaß funkioniert noch nicht so gut
             self.__updateStates()
             self.__updateColors()
+            return_color.append([self.colorList])
 
             # wenn 1 Sekunde vergangen ist, dann speichere den Zeitpunkt t in TimeList
             # und die Anzahl der S, I und R zum Zeitpunkt t
             self.__getSIRAmmounts()
+            return_SusAmmountList.append([self.SusAmmountList])
+            return_InfAmmountList.append([self.InfAmmountList])
+            return_RemAmmountList.append([self.RemAmmountList])
+
             self.TimeList.append(self.TimeCounter / FPS)
+            return_timeList.append([self.TimeList])
 
             # erhöhe den Zeitpunktcounter um 1
             self.TimeCounter += 1
 
-            # Update die Daten der Simualtion (Koordinaten der Agenten)
-            sc.set_offsets(np.c_[self.xCoordinates, self.yCoordinates])
-            sc.set_facecolor(self.colorList)
+            #Laufvariable
+            duration += 1
 
-            # Update die Daten der Verbreitung (Kennzahlen der Gruppen)
-            pl1.set_data(self.TimeList, self.SusAmmountList)
-            pl2.set_data(self.TimeList, self.InfAmmountList)
-            pl3.set_data(self.TimeList, self.RemAmmountList)
-            # Update die x Achse des Line Plots
-            ax2.relim()
-            ax2.autoscale_view()
+        return {
+            "frame" : {
+                "x_pos" : self.xCoordinates,
+                "y_pos" : self.yCoordinates,
+                "color" : self.colorList,
+                "x_lim" : self.Environment.xDimension,
+                "y_lim" : self.Environment.yDimension,
+                "env_name" : self.Environment.name,
+                "pop_amount" : self.Environment.populationAmmount,
+            },
+            "movement" : {
+                "SusAmmountList" : return_SusAmmountList,
+                "InfAmmountList" : return_InfAmmountList,
+                "RemAmmountList" : return_RemAmmountList,
+                "timeList" : return_timeList,
+                "colorList" : return_color
+            }
+        }
 
-        self.ani = matplotlib.animation.FuncAnimation(fig, animate, frames=FPS * self.duration, interval=iv,
-                                                 repeat=self.extinctDiseas)
-        plt.show()
 
     # Setze StoppBedingung der Simulation
     # (duration -int =Dauer der Simulation in Sekunden, extinctDiseas -Bool =standardmäßig False, wenn true, hört die Simulation auf, wenn die Krankheit ausgestorben ist)
@@ -221,5 +227,5 @@ class Sim:
 
         if (k == "duration"):
             self.duration = v
-        elif (k == "extinctDiseas"):
+        elif (k == "extinctDisease"):
             self.extinctDiseas = v
