@@ -19,9 +19,10 @@ class Main:
 
 # Intitialize runtime
 runtime = Main()
+user_defined = ruleset.Ruleset(runtime.config)
 
 # Create a ruleset with Paramenters from JSON
-runtime.ruleset = ruleset.Ruleset(runtime.config).getRuleset()
+runtime.ruleset = user_defined.getRuleset()
 
 #Create a Simulation with given Rulesets
 runtime.sim = sim.Sim(runtime.ruleset)
@@ -34,4 +35,5 @@ runtime.sim.setStopCondition(duration=100)
 result = runtime.sim.start(50)
 
 #create Simulation
-runtime.animation = animation.Animation(ruleset.Ruleset(runtime.config).getSettings(), result)
+settings = user_defined.getSettings()
+runtime.animation = animation.Animation(settings, result).animate()

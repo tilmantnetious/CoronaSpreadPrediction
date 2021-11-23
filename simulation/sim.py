@@ -138,9 +138,9 @@ class Sim:
 
         #Initialisierung des Returnarrays
         start_x_pos, start_y_pos =  self.__setCoordinates()
-        return_x_pos = [[start_y_pos]]
-        return_y_pos = [[start_y_pos]]
-        return_color = [[self.__setColors()]]
+        return_x_pos = [start_x_pos]
+        return_y_pos = [start_y_pos]
+        return_color = [self.__setColors()]
         return_SusAmmountList = []
         return_InfAmmountList = []
         return_RemAmmountList = []
@@ -171,14 +171,14 @@ class Sim:
 
             # update die Koordinaten, Status und Farben der Agenten
             self.__updateCoordinates()
-            return_x_pos.append([self.xCoordinates])
-            return_y_pos.append([self.yCoordinates])
+            return_x_pos.append(self.xCoordinates)
+            return_y_pos.append(self.yCoordinates)
 
 
             # Hier der Spaß funkioniert noch nicht so gut
             self.__updateStates()
             self.__updateColors()
-            return_color.append([self.colorList])
+            return_color.append(self.colorList)
 
             # wenn 1 Sekunde vergangen ist, dann speichere den Zeitpunkt t in TimeList
             # und die Anzahl der S, I und R zum Zeitpunkt t
@@ -198,9 +198,9 @@ class Sim:
 
         return {
             "frame" : {
-                "x_pos" : self.xCoordinates,
-                "y_pos" : self.yCoordinates,
-                "color" : self.colorList,
+                "x_pos" : return_x_pos,
+                "y_pos" : return_y_pos,
+                "color" : return_color,
                 "x_lim" : self.Environment.xDimension,
                 "y_lim" : self.Environment.yDimension,
                 "env_name" : self.Environment.name,
