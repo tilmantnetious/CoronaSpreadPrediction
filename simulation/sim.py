@@ -33,6 +33,7 @@ class Sim:
         self.RemAmmountList = []
         self.TimeList = []
         self.TimeCounter = 0
+        self.ani = False
 
     # generiere Agenten mittels der Populationsanzahl der Enviornment
     def __generateAgents(self):
@@ -205,7 +206,7 @@ class Sim:
             ax2.relim()
             ax2.autoscale_view()
 
-        ani = matplotlib.animation.FuncAnimation(fig, animate, frames=FPS * self.duration, interval=iv,
+        self.ani = matplotlib.animation.FuncAnimation(fig, animate, frames=FPS * self.duration, interval=iv,
                                                  repeat=self.extinctDiseas)
         plt.show()
 
