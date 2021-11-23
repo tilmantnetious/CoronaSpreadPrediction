@@ -4,9 +4,9 @@
       "name": "cov",
       "infectionRadius": 1.5,
       "infectionProbability": 0.999,
-      "incubationTime": "14",
-      "infectionTime": "10",
-      "mortalityRate": ".001"
+      "incubationTime": 14,
+      "infectionTime": 10,
+      "mortalityRate": 0.001
     }
   },
   "environment": {

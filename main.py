@@ -31,6 +31,3 @@ runtime.sim = sim.Sim(runtime.ruleset)
 runtime.sim.setStopCondition(duration=100)
 
 runtime.sim.start(25)
-
-#Debugpoint
-print("hold")
