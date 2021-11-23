@@ -73,22 +73,6 @@ class Animation:
         return fig, ax2, pl1, pl2, pl3, sc
 
 
-    # def __callback_animation(self,fig, pl1, pl2, pl3, sc, printToFile = False):
-    #     # Update die Daten der Simualtion (Koordinaten der Agenten)
-    #     sc.set_offsets(np.c_[self.x_pos[self.step +1], self.y_pos[self.step +1]])
-    #     sc.set_facecolor(self.colorList[self.step +1])
-    #
-    #     # Update die Daten der Verbreitung (Kennzahlen der Gruppen)
-    #     pl1.set_data(self.TimeList[self.step], self.SusAmmountList[self.step])
-    #     pl2.set_data(self.TimeList[self.step], self.InfAmmountList[self.step])
-    #     pl3.set_data(self.TimeList[self.step], self.RemAmmountList[self.step])
-    #     # Update die x Achse des Line Plots
-    #     ax2.relim()
-    #     ax2.autoscale_view()
-    #
-    #     #Stepping
-    #     self.step += 1
-
     def animate(self):
 
         """
