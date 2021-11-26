@@ -171,14 +171,14 @@ class Sim:
 
             # update die Koordinaten, Status und Farben der Agenten
             self.__updateCoordinates()
-            return_x_pos.append(self.xCoordinates)
-            return_y_pos.append(self.yCoordinates)
+            return_x_pos.append(self.xCoordinates.copy())
+            return_y_pos.append(self.yCoordinates.copy())
 
 
             # Hier der Spaß funkioniert noch nicht so gut
             self.__updateStates()
             self.__updateColors()
-            return_color.append(self.colorList)
+            return_color.append(self.colorList.copy())
 
             # wenn 1 Sekunde vergangen ist, dann speichere den Zeitpunkt t in TimeList
             # und die Anzahl der S, I und R zum Zeitpunkt t
