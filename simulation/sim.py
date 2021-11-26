@@ -146,7 +146,7 @@ class Sim:
         return_RemAmmountList = []
         return_timeList = []
 
-        while duration <= self.duration:
+        while duration <= self.duration * FPS:
 
             # Bewege jeden einzelnen Agenten
             for i in range(self.Environment.populationAmmount):
@@ -207,12 +207,12 @@ class Sim:
                 "pop_amount" : self.Environment.populationAmmount,
             },
             "movement" : {
-                # "SusAmmountList" : return_SusAmmountList,
-                # "InfAmmountList" : return_InfAmmountList,
-                # "RemAmmountList" : return_RemAmmountList,
-                "SusAmmountList": self.SusAmmountList,
-                "InfAmmountList": self.InfAmmountList,
-                "RemAmmountList": self.RemAmmountList,
+                "SusAmmountList" : return_SusAmmountList,
+                "InfAmmountList" : return_InfAmmountList,
+                "RemAmmountList" : return_RemAmmountList,
+                # "SusAmmountList": self.SusAmmountList,
+                # "InfAmmountList": self.InfAmmountList,
+                # "RemAmmountList": self.RemAmmountList,
                 "timeList" : return_timeList,
                 "colorList" : return_color
             }

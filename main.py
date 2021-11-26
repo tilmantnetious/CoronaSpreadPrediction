@@ -32,7 +32,7 @@ runtime.sim = sim.Sim(runtime.ruleset)
 # @todo --> JSON - parameter
 runtime.sim.setStopCondition(duration=100)
 
-result = runtime.sim.start(50)
+result = runtime.sim.start(25)
 
 #create Simulation
 settings = user_defined.getSettings()

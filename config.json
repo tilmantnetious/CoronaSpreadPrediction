@@ -27,7 +27,7 @@
     }
   },
   "settings": {
-    "framesPerSecond" : 50,
-    "intervalPerFrame" : 1000
+    "framesPerSecond" : 25,
+    "intervalPerFrame" : 100
   }
 }
