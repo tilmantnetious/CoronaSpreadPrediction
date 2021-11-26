@@ -183,12 +183,12 @@ class Sim:
             # wenn 1 Sekunde vergangen ist, dann speichere den Zeitpunkt t in TimeList
             # und die Anzahl der S, I und R zum Zeitpunkt t
             self.__getSIRAmmounts()
-            return_SusAmmountList.append([self.SusAmmountList])
-            return_InfAmmountList.append([self.InfAmmountList])
-            return_RemAmmountList.append([self.RemAmmountList])
+            return_SusAmmountList.append(self.SusAmmountList.copy())
+            return_InfAmmountList.append(self.InfAmmountList.copy())
+            return_RemAmmountList.append(self.RemAmmountList.copy())
 
             self.TimeList.append(self.TimeCounter / FPS)
-            return_timeList.append([self.TimeList])
+            return_timeList.append(self.TimeList.copy())
 
             # erhöhe den Zeitpunktcounter um 1
             self.TimeCounter += 1
