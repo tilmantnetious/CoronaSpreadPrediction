@@ -72,7 +72,6 @@ class Animation:
 
         return fig, ax2, pl1, pl2, pl3, pl4, sc
 
-
     def animate(self):
 
         """
@@ -104,3 +103,6 @@ class Animation:
                                               , interval = self.settings.intervalPerFrame
                                               , repeat=self.extinctDisease)
         plt.show()
+
+    def show(self):
+        print("show")
