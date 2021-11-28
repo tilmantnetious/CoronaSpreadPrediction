@@ -146,6 +146,10 @@ class Sim:
 
     # Starte Simulation
     def start(self, FPS):
+        """
+        Simulates the given Simulation and stops, when there is no infectious Agent left or the duration of tzhe Simulation is reached
+        :param FPS: Frames Per Second - the number of Updates per Second for the Simulation
+        """
         print("Start")
         duration = 0
 
@@ -216,6 +220,9 @@ class Sim:
             #Laufvariable
             duration += 1
 
+            #Stop the Simulation, when there is no infectious Agent left
+            if(return_InfAmmountList[-1][-1] == 0):
+                break
 
         return {
             "frame" : {
@@ -239,18 +246,3 @@ class Sim:
                 "colorList" : return_color
             }
         }
-
-
-    # Setze StoppBedingung der Simulation
-    # (duration -int =Dauer der Simulation in Sekunden, extinctDiseas -Bool =standardmäßig False, wenn true, hört die Simulation auf, wenn die Krankheit ausgestorben ist)
-    def setStopCondition(self, **conditions):
-        keys = []
-        vals = []
-        for k, v in conditions.items():
-            keys.append(k)
-            vals.append(v)
-
-        if (k == "duration"):
-            self.duration = v
-        elif (k == "extinctDisease"):
-            self.extinctDiseas = v

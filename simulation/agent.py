@@ -21,6 +21,13 @@ class Agent:
         self.TimeBeeingInfected = 0
 
     def move(self,direction,xDimension,yDimension):
+        """
+        Moves the Agent by the given direction, within given dimensions
+
+        :param direction: Object with x and y values, which take values between 0 and 1
+        :param xDimension: The X-Dimension in which Agents can move
+        :param yDimension: The Y-Dimension in which Agents can move
+        """
         if self.position.x+direction.x>xDimension:
             direction.x = direction.x*(-1)
         elif self.position.x+direction.x<0:
@@ -35,6 +42,12 @@ class Agent:
         self.position.y += direction.y
     
     def infect(self, agentList):
+        """
+        Infect the Agents nearby the Agent
+
+        :param agentList: The Collection of all Agents in the Simulation
+        """
+
         #Quadrat der Hypothenuse
         sh = self.Virus.infectionRadius**2
 
@@ -51,22 +64,37 @@ class Agent:
                     i.getInfected()
 
     def increaseTimeBeeingInfected(self):
+        """
+        Increase the TimeCounter of an Agent beeing infected
+        """
         self.TimeBeeingInfected +=1
 
     def setVirus(self,v):
+        """
+        Set a Virus to the agent
+        """
         self.Virus = v
 
     def getInfected(self):
+        """
+        Change the State of an Agent of beeing Infectious
+        """
         self.isInfected = True
         self.isSusceptible = False
         
     def getRemoved(self):
+        """
+        Change the State of an Agent of beeing Removed (Recovered)
+        """
         self.isRemoved = True
         self.isInfected = False
         self.Virus = None
         self.TimeBeeingInfected = 0
 
     def getDead(self):
+        """
+        Change the State of an Agent of beeing Dead 
+        """
         self.isDead = True
         self.isInfected = False
         self.Virus = None

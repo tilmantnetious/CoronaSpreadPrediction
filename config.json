@@ -6,7 +6,7 @@
       "infectionProbability": 0.999,
       "incubationTime": 14,
       "infectionTime": 10,
-      "mortalityRate": 0.1
+      "mortalityRate": 0.9
     }
   },
   "environment": {

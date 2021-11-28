@@ -19,7 +19,7 @@ class Animation:
     def __init__(self, settings, result):
 
         self.settings = settings
-        self.extingtDisease = False
+        self.extinctDisease = False
         self.animation = False
         self.duration = 100
         self.step = 0
@@ -41,8 +41,6 @@ class Animation:
         self.colorList = result['movement']['colorList']
         self.x_pos = result['frame']['x_pos']
         self.y_pos = result['frame']['y_pos']
-
-
 
     def __initFrame(self):
 
@@ -104,5 +102,5 @@ class Animation:
                                               , c
                                               , frames = self.settings.framesPerSecond * self.duration
                                               , interval = self.settings.intervalPerFrame
-                                              , repeat=self.extingtDisease)
+                                              , repeat=self.extinctDisease)
         plt.show()
