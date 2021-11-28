@@ -6,7 +6,7 @@
       "infectionProbability": 0.999,
       "incubationTime": 14,
       "infectionTime": 10,
-      "mortalityRate": 0.001
+      "mortalityRate": 0.1
     }
   },
   "environment": {
@@ -28,6 +28,6 @@
   },
   "settings": {
     "framesPerSecond" : 25,
-    "intervalPerFrame" : 100
+    "intervalPerFrame" : 50
   }
 }

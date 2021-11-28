@@ -36,6 +36,7 @@ class Animation:
         self.SusAmmountList = result['movement']['SusAmmountList']
         self.InfAmmountList = result['movement']['InfAmmountList']
         self.RemAmmountList = result['movement']['RemAmmountList']
+        self.DeaAmmountList = result['movement']['DeaAmmountList']
         self.TimeList = result['movement']['timeList']
         self.colorList = result['movement']['colorList']
         self.x_pos = result['frame']['x_pos']
@@ -52,9 +53,10 @@ class Animation:
         sc = ax1.scatter(self.start_x_pos, self.start_y_pos, color=self.start_color)
 
         #initiolisierung des Line-Plots
-        pl1, = ax2.plot([], [], "-b", label="susceptible")
-        pl2, = ax2.plot([], [], "-r", label="infectious")
-        pl3, = ax2.plot([], [], "-g", label="removed")
+        pl1, = ax2.plot([], [], "blue", label="susceptible")
+        pl2, = ax2.plot([], [], "red", label="infectious")
+        pl3, = ax2.plot([], [], "green", label="recovered")
+        pl4, = ax2.plot([], [], "grey", label="dead")
         ax2.legend(loc="upper left")
 
         # Scatter Plot Spezifikationen
@@ -70,7 +72,7 @@ class Animation:
         ax2.set_ylabel("Agents")
         ax2.set_title(str(self.env_name) + " Spread")
 
-        return fig, ax2, pl1, pl2, pl3, sc
+        return fig, ax2, pl1, pl2, pl3, pl4, sc
 
 
     def animate(self):
@@ -79,17 +81,18 @@ class Animation:
         Animates the given Dataset
         :return:
         """
-        fig,ax2, pl1, pl2, pl3, sc = self.__initFrame()
+        fig,ax2, pl1, pl2, pl3, pl4, sc = self.__initFrame()
 
         def c(i):
             # Update die Daten der Simualtion (Koordinaten der Agenten)
             sc.set_offsets(np.c_[self.x_pos[self.step + 1], self.y_pos[self.step + 1]])
-            sc.set_facecolor(self.colorList[self.step + 1])
+            sc.set_color(self.colorList[self.step + 1])
 
             # Update die Daten der Verbreitung (Kennzahlen der Gruppen)
             pl1.set_data(self.TimeList[self.step], self.SusAmmountList[self.step])
             pl2.set_data(self.TimeList[self.step], self.InfAmmountList[self.step])
             pl3.set_data(self.TimeList[self.step], self.RemAmmountList[self.step])
+            pl4.set_data(self.TimeList[self.step], self.DeaAmmountList[self.step])
             # Update die x Achse des Line Plots
             ax2.relim()
             ax2.autoscale_view()

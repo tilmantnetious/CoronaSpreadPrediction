@@ -10,12 +10,13 @@ Agent Class
 import random
 
 class Agent:
-    def __init__(self, id, position, isSusceptible, isInfected, isRemoved):
+    def __init__(self, id, position, isSusceptible, isInfected, isRemoved, isDead):
         self.id = id
         self.position = position
         self.isSusceptible = isSusceptible
         self.isInfected = isInfected
         self.isRemoved = isRemoved
+        self.isDead = isDead
         self.Virus = None
         self.TimeBeeingInfected = 0
 
@@ -32,7 +33,7 @@ class Agent:
 
         self.position.x += direction.x
         self.position.y += direction.y
-
+    
     def infect(self, agentList):
         #Quadrat der Hypothenuse
         sh = self.Virus.infectionRadius**2
@@ -61,6 +62,12 @@ class Agent:
         
     def getRemoved(self):
         self.isRemoved = True
+        self.isInfected = False
+        self.Virus = None
+        self.TimeBeeingInfected = 0
+
+    def getDead(self):
+        self.isDead = True
         self.isInfected = False
         self.Virus = None
         self.TimeBeeingInfected = 0

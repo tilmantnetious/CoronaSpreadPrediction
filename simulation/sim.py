@@ -31,6 +31,7 @@ class Sim:
         self.SusAmmountList = []
         self.InfAmmountList = []
         self.RemAmmountList = []
+        self.DeaAmmountList = []
         self.TimeList = []
         self.TimeCounter = 0
         self.ani = False
@@ -42,11 +43,14 @@ class Sim:
             xPos = random.random() * self.Environment.xDimension
             yPos = random.random() * self.Environment.yDimension
             if self.stateList[i] == "s":
-                agList.append(ag(i, position(xPos, yPos), True, False, False))
+                agList.append(ag(i, position(xPos, yPos), True, False, False, False))
             elif self.stateList[i] == "i":
-                agList.append(ag(i, position(xPos, yPos), False, True, False))
+                agList.append(ag(i, position(xPos, yPos), False, True, False, False))
             elif self.stateList[i] == "r":
-                agList.append(ag(i, position(xPos, yPos), False, False, True))
+                agList.append(ag(i, position(xPos, yPos), False, False, True, False))
+            elif self.stateList[i] == "d":
+                agList.append(ag(i, position(xPos, yPos), False, False, False, True))
+
         return agList
 
     # Setze die Koordinaten der Agenten in einen x- und y- Array fest
@@ -94,6 +98,8 @@ class Sim:
                 colors.append("red")
             elif (self.stateList[i] == "r"):
                 colors.append("green")
+            elif (self.stateList[i] == "d"):
+                colors.append("grey")
         return colors
 
     # Update den Status der Agenten
@@ -105,6 +111,8 @@ class Sim:
                 self.stateList[i] = "i"
             elif (self.agentList[i].isRemoved == True):
                 self.stateList[i] = "r"
+            elif (self.agentList[i].isDead == True):
+                self.stateList[i] = "d"
 
     # Uodate die Farbe der Agenten
     def __updateColors(self):
@@ -115,10 +123,12 @@ class Sim:
                 self.colorList[i] = "red"
             elif (self.stateList[i] == "r"):
                 self.colorList[i] = "green"
+            elif (self.stateList[i] == "d"):
+                self.colorList[i] = "grey"
 
     # Erfasse die GruppenGrößen
     def __getSIRAmmounts(self):
-        sus, inf, rem = 0, 0, 0
+        sus, inf, rem , dea = 0, 0, 0, 0
         for a in self.agentList:
             if (a.isSusceptible == True):
                 sus += 1
@@ -126,10 +136,13 @@ class Sim:
                 inf += 1
             elif (a.isRemoved == True):
                 rem += 1
+            elif (a.isDead == True):
+                dea += 1
 
         self.SusAmmountList.append(sus)
         self.InfAmmountList.append(inf)
         self.RemAmmountList.append(rem)
+        self.DeaAmmountList.append(dea)
 
     # Starte Simulation
     def start(self, FPS):
@@ -144,6 +157,7 @@ class Sim:
         return_SusAmmountList = []
         return_InfAmmountList = []
         return_RemAmmountList = []
+        return_DeaAmmountList = []
         return_timeList = []
 
         while duration <= self.duration * FPS:
@@ -165,7 +179,13 @@ class Sim:
                     self.agentList[i].increaseTimeBeeingInfected()
                     # Ist die INfektionszeit = der INfektionszeit des Virus, entferne den Agenten
                     if (self.agentList[i].TimeBeeingInfected == self.Virus.infectionTime * FPS):
-                        self.agentList[i].getRemoved()
+                        r = random.random()
+                        if(r<self.Virus.mortalityRate):
+                            self.agentList[i].getDead()
+                            self.direction[i].x = 0
+                            self.direction[i].y = 0
+                        else:
+                            self.agentList[i].getRemoved()
                 elif (self.agentList[i].isRemoved == True):
                     pass
 
@@ -174,8 +194,7 @@ class Sim:
             return_x_pos.append(self.xCoordinates.copy())
             return_y_pos.append(self.yCoordinates.copy())
 
-
-            # Hier der Spaß funkioniert noch nicht so gut
+            # Update den Status und die Farbe der Agenten
             self.__updateStates()
             self.__updateColors()
             return_color.append(self.colorList.copy())
@@ -186,6 +205,7 @@ class Sim:
             return_SusAmmountList.append(self.SusAmmountList.copy())
             return_InfAmmountList.append(self.InfAmmountList.copy())
             return_RemAmmountList.append(self.RemAmmountList.copy())
+            return_DeaAmmountList.append(self.DeaAmmountList.copy())
 
             self.TimeList.append(self.TimeCounter / FPS)
             return_timeList.append(self.TimeList.copy())
@@ -195,6 +215,7 @@ class Sim:
 
             #Laufvariable
             duration += 1
+
 
         return {
             "frame" : {
@@ -210,6 +231,7 @@ class Sim:
                 "SusAmmountList" : return_SusAmmountList,
                 "InfAmmountList" : return_InfAmmountList,
                 "RemAmmountList" : return_RemAmmountList,
+                "DeaAmmountList" : return_DeaAmmountList,
                 # "SusAmmountList": self.SusAmmountList,
                 # "InfAmmountList": self.InfAmmountList,
                 # "RemAmmountList": self.RemAmmountList,

@@ -14,7 +14,7 @@ from out import animation
 class Main:
     def __init__(self):
         """Konstruktor"""
-        self.config = open('config.json')
+        self.config = open('CoronaSpreadPrediction\\config.json')
 
 
 # Intitialize runtime
