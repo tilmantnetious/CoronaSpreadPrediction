@@ -191,6 +191,7 @@ class Sim:
                         else:
                             self.agentList[i].getRemoved()
                 elif (self.agentList[i].isRemoved == True):
+                    self.agentList[i].returnToSusceptible(self.Virus.returnToSusceptible)
                     pass
 
             # update die Koordinaten, Status und Farben der Agenten

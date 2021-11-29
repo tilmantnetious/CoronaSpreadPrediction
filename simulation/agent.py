@@ -19,6 +19,7 @@ class Agent:
         self.isDead = isDead
         self.Virus = None
         self.TimeBeeingInfected = 0
+        self.recoveredSince = None
 
     def move(self,direction,xDimension,yDimension):
         """
@@ -90,6 +91,7 @@ class Agent:
         self.isInfected = False
         self.Virus = None
         self.TimeBeeingInfected = 0
+        self.recoveredSince = 1
 
     def getDead(self):
         """
@@ -99,6 +101,18 @@ class Agent:
         self.isInfected = False
         self.Virus = None
         self.TimeBeeingInfected = 0
+
+    def returnToSusceptible(self, returnToSusceptible):
+        """
+        Returns Agents back to beeing Susceptible after x- Days.
+        :var returnToSusceptible, int, Days after which Agent is susceptible again
+        :return: void
+        """
+
+        if self.recoveredSince >= returnToSusceptible:
+            self.isSusceptible = True
+
+        self.recoveredSince += 1
 
 class Position:
     def __init__(self,x,y):
