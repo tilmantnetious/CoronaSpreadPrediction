@@ -105,4 +105,15 @@ class Animation:
         plt.show()
 
     def show(self):
+        """
+        Shows The Result of the Simulation in a lineplot
+        """
         print("show")
+
+        pl1, = plt.plot(self.TimeList[-1], self.SusAmmountList[-1], "blue", label="susceptible")
+        pl2, = plt.plot(self.TimeList[-1], self.InfAmmountList[-1], "red", label="infectious")
+        pl3, = plt.plot(self.TimeList[-1], self.RemAmmountList[-1], "green", label="recovered")
+        pl4, = plt.plot(self.TimeList[-1], self.DeaAmmountList[-1], "grey", label="dead")
+        plt.legend(loc="upper right")
+
+        plt.show()
