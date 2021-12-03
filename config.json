@@ -6,7 +6,8 @@
       "infectionProbability": 0.9,
       "incubationTime": 14,
       "infectionTime": 10,
-      "mortalityRate": 0.1
+      "mortalityRate": 0.1,
+      "returnToSusceptible":  120
     }
   },
   "environment": {
@@ -14,7 +15,7 @@
       "name" : "Environment 1",
       "xDimension": 50,
       "yDimension": 50,
-      "populationAmmount": 100,
+      "populationAmmount": 200,
       "distance": 0,
       "hasMasks": false,
       "hasAusgangssperre": false,

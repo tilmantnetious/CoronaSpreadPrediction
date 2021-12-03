@@ -37,4 +37,4 @@ result = runtime.sim.start(25)
 
 #create Simulation
 settings = user_defined.getSettings()
-runtime.animation = animation.Animation(settings, result).animate()
+runtime.animation = animation.Animation(settings, result).show()
