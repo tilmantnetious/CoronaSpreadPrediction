@@ -3,10 +3,10 @@
     "cov": {
       "name": "cov",
       "infectionRadius": 1.5,
-      "infectionProbability": 0.999,
+      "infectionProbability": 0.9,
       "incubationTime": 14,
       "infectionTime": 10,
-      "mortalityRate": 0.01
+      "mortalityRate": 0.1
     }
   },
   "environment": {
