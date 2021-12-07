@@ -30,10 +30,11 @@ runtime.sim = sim.Sim(runtime.ruleset)
 #setStopCondition(duration -int =Dauer der Simulation in Sekunden, extinctDiseas -Bool =standardmäßig False, wenn true,
 # hört die Simulation auf, wenn die Krankheit ausgestorben ist)
 # @todo --> JSON - parameter
+# @todo --> StopCondition raushauen
 runtime.sim.setStopCondition(duration=100)
 
 result = runtime.sim.start(25)
 
 #create Simulation
 settings = user_defined.getSettings()
-runtime.animation = animation.Animation(settings, result).animate()
+runtime.animation = animation.Animation(settings, result).show()
