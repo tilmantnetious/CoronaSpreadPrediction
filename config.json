@@ -6,7 +6,7 @@
       "infectionProbability": 0.999,
       "incubationTime": 14,
       "infectionTime": 10,
-      "mortalityRate": 0.01,
+      "mortalityProbablility": 0.01,
       "returnToSusceptible":  120
     }
   },
@@ -18,13 +18,13 @@
       "populationAmmount": 100,
       "distance": 0,
       "hasMasks": false,
-      "hasAusgangssperre": false,
+      "hasCurvew": false,
       "hasLockdown": false
     }
   },
   "people": {
     "people_a": {
-      "age": "30"
+      "ageGroup": "30"
     }
   },
   "settings": {

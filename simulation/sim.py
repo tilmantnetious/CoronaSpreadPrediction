@@ -184,7 +184,7 @@ class Sim:
                     # Ist die INfektionszeit = der INfektionszeit des Virus, entferne den Agenten
                     if (self.agentList[i].TimeBeeingInfected == self.Virus.infectionTime * FPS):
                         r = random.random()
-                        if(r<self.Virus.mortalityRate):
+                        if(r<self.Virus.mortalityProbablility):
                             self.agentList[i].getDead()
                             self.direction[i].x = 0
                             self.direction[i].y = 0
