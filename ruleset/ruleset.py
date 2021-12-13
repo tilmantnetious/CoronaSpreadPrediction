@@ -31,11 +31,6 @@ class Ruleset:
 
     def getRuleset(self):
 
-        #fixme
-        #   Hier muss die Schnittstelle definiert werden, die
-        #   unser Ruleset definiert. Wir sollten hier erstmal einen passenden Array Mocken
-        #   um die Simulation zum laufen zu bringen. TS
-
         ruleset = {
             "virus" : self.virus.getVirus(),
             "env": self.environment.getEnvironment(),
