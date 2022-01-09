@@ -109,7 +109,7 @@ class Agent:
         :return: void
         """
 
-        if self.recoveredSince >= returnToSusceptible:
+        if self.recoveredSince >= returnToSusceptible*25:
             self.isSusceptible = True
 
         self.recoveredSince += 1

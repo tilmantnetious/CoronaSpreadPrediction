@@ -42,6 +42,7 @@ class Animation:
         self.x_pos = result['frame']['x_pos']
         self.y_pos = result['frame']['y_pos']
 
+
     def __initFrame(self):
 
         # erstelle 2 Plots
@@ -55,7 +56,7 @@ class Animation:
         pl2, = ax2.plot([], [], "red", label="infectious")
         pl3, = ax2.plot([], [], "green", label="recovered")
         pl4, = ax2.plot([], [], "grey", label="dead")
-        ax2.legend(loc="upper left")
+        ax2.legend(loc="upper right")
 
         # Scatter Plot Spezifikationen
         ax1.set_xlim(0, self.x_lim)
@@ -78,6 +79,12 @@ class Animation:
         Animates the given Dataset
         :return:
         """
+        from matplotlib import rcParams
+
+        # make sure the full paths for ImageMagick and ffmpeg are configured
+        rcParams['animation.ffmpeg_path'] = r'C:\\Program Files\\ffmpeg\\bin\\ffmpeg.exe'
+        rcParams["figure.dpi"] = 100
+
         fig,ax2, pl1, pl2, pl3, pl4, sc = self.__initFrame()
 
         def c(i):
@@ -97,12 +104,15 @@ class Animation:
             # Stepping
             self.step += 1
 
-        self.animation = plta.FuncAnimation(fig
+        b = self.animation = plta.FuncAnimation(fig
                                               , c
                                               , frames = self.settings.framesPerSecond * self.duration
                                               , interval = self.settings.intervalPerFrame
                                               , repeat=self.extinctDisease)
-        plt.show()
+        
+        b.save('myAnim.mp4', writer=plta.FFMpegWriter(fps=25, bitrate=2000))
+        #plt.show()
+
 
     def show(self):
         """
