@@ -14,7 +14,7 @@ from out import animation
 class Main:
     def __init__(self):
         """Konstruktor"""
-        self.config = open('CoronaSpreadPrediction\\config.json')
+        self.config = open('config.json')
 
 
 # Intitialize runtime
@@ -38,7 +38,7 @@ for i in range(50):
     runtime.sim.setStopCondition(duration=300)
 
     result = runtime.sim.start(25)
-    r = open("SuperBasisKonfiguration_result3.txt","a")
+    r = open("SuperBasisKonfiguration_result1.txt","a")
     allsim+=("[")
     for el in result["movement"]["SusAmmountList"][-1]:
         allsim += str(el)+","
@@ -61,5 +61,5 @@ r.write(allsim)
 print("done")
 
 #create Simulation
-#settings = user_defined.getSettings()
-#runtime.animation = animation.Animation(settings, result).show()
+settings = user_defined.getSettings()
+runtime.animation = animation.Animation(settings, result).show()

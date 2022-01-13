@@ -7,7 +7,7 @@
       "incubationTime": 14,
       "infectionTime": 10,
       "mortalityRate": 0,
-      "returnToSusceptible":  1000000000
+      "returnToSusceptible":  30
     }
   },
   "environment": {
