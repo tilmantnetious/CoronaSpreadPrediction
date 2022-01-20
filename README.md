@@ -1,5 +1,4 @@
 # CoronaSpreadPrediction
 
-Hier wird unserer Code leben <3
-
-Ich muss den ganzen Spaß nur noch irgendwie mit Visual Studio Code verknüpfen, dass ich alles gleich dort bearbeiten kann :D
+Der im Zuge der Seminararbeit Wirtschaftsinformatik entstandene Prototyp
+zur Simulation von Virusverbreitung basierend auf dem SIR Modell und agentenbasierter Modellierung
